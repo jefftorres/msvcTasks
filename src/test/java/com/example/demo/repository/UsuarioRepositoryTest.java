@@ -56,22 +56,28 @@ class UsuarioRepositoryTest extends AbstractIntegrationDBTest {
         // when
         Usuario userSaved = usuarioRepository.save(usuario);
         // then
-        assertThat(userSaved).isNotNull();
+        assertThat(userSaved.getId()).isNotNull();
 
     }
 
     @Test
     @DisplayName("Dado un conjunto de usuarios, al buscarlos todos obtenemos la lista de los usuarios en la base de datos.")
     void shouldGetAllUsers() {
-        // TODO
+        // given
+        initMockUsuarios();
+        // when
+        List<Usuario> usuarios = usuarioRepository.findAll();
+        // then
+        assertThat(usuarios).hasSize(2);
     }
 
     @Test
     void givenUsuarios_whenBuscarPorNombresYApellido_thenObtienesUnaListaDeUsuarios() {
-        // TODO add users to this
-
+        // given
+        initMockUsuarios();
+        // when
         List<Usuario> usuarios = usuarioRepository.findByNombreAndApellidos("X", "Y Z");
-
+        // then
         assertThat(usuarios).isNotEmpty();
         assertThat(usuarios).first().hasFieldOrPropertyWithValue("nombre", "X");
     }
