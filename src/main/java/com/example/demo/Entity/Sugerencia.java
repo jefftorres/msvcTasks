@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+@Builder
 public class Sugerencia implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

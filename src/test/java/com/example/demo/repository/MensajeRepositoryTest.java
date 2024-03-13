@@ -57,15 +57,10 @@ class MensajeRepositoryTest extends AbstractIntegrationDBTest {
     @DisplayName("Dado un conjunto de mensajes, buscar si los mensajes existen en la base de datos")
     void givenId_whenMensaje_thenExists() {
         // given
-
         initMockMensajes();
         // when
-//        for (Mensaje m : mensajeRepository.findAll()) {
-//            // then
-//            assertThat(m.getId()).isNotNull();
-//        }
-
         mensajeRepository.findAll().forEach(m -> {
+            // then
             assertThat(m.getId()).isNotNull();
         });
     }
